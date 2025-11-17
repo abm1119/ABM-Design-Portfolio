@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeTechApp.Pages.ServiceDetailsPage"
+             Title="Service Details">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="SectionTitle">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#2d89ef" />
+            <Setter Property="Margin" Value="10,20,10,10" />
+        </Style>
+
+        <Style TargetType="Frame" x:Key="PackageFrame">
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="BorderColor" Value="#d9d9d9" />
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout BackgroundColor="#f5f5f5" Padding="10" >
+                <Image Source="{Binding Image}" WidthRequest="300" HeightRequest="200" Aspect="AspectFit" HorizontalOptions="Center" />
+
+                <Label Text="{Binding Name}" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#333"  Margin="0,10" />
+                <Label Text="{Binding Price}" FontSize="18" TextColor="#888" HorizontalTextAlignment="Center" Margin="0,5"/>
+
+                <Label Text="Packages"
+                       Style="{StaticResource SectionTitle}" />
+                
+                <CollectionView ItemsSource="{Binding Packages}">
+                    
+                    <CollectionView.ItemTemplate>
+                        
+                        <DataTemplate>
+                            <Frame  Style="{StaticResource PackageFrame}" BackgroundColor="{Binding BackgroundColor}">
+                                <StackLayout>
+                                    <Label Text="{Binding Name}" FontAttributes="Bold"  FontSize="20" TextColor="#2d89ef"/>
+                                    <Label Text="{Binding Price}" TextColor="#555"  FontSize="18"/>
+                                    <Label Text="{Binding Description}" FontSize="16" TextColor="#666" LineHeight="1.5"/>
+
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Text="Order Now"
+                        FontSize="18"
+                        BackgroundColor="#2d89ef"
+                        TextColor="White"
+                        CornerRadius="5"
+                        Margin="0,20,0,0"
+                        HeightRequest="50"
+                        Clicked="OnOrderButtonClicked" />
+                <!-- Description = "Includes basic features to get started.",
+Description = "Offers additional features and tools.",
+Description = "Comprehensive features for advanced needs.",
+Description = "Customized solutions for enterprises.",
+    -->
+
+                <Label Text="Additional Information"
+                       Style="{StaticResource SectionTitle}" />
+                <Label Text="Our services are tailored to meet the needs of all clients, ensuring maximum satisfaction with cutting-edge solutions."
+                       FontSize="16" TextColor="#555" LineHeight="1.5" Margin="10" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

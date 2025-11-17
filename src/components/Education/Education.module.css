@@ -1,0 +1,232 @@
+.education {
+  background: linear-gradient(180deg, #FFF5F0 0%, #FAFAFA 50%, #F5F5F7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.education::before {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sectionLabel {
+  display: inline-block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+  padding: 8px 16px;
+  background: rgba(255, 107, 53, 0.1);
+  border-radius: var(--radius-full);
+}
+
+.subtitle {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.column {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.column.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.column:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.columnTitle {
+  margin-bottom: var(--spacing-lg);
+}
+
+.degreeCard {
+  padding: var(--spacing-xl);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.degreeCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-slow);
+}
+
+.degreeCard:hover::before {
+  transform: scaleX(1);
+}
+
+.degreeCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.degreeTitle {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.university {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+}
+
+.period {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255, 107, 53, 0.08);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+  margin-bottom: var(--spacing-lg);
+}
+
+.coursework {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.courseworkTitle {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.courseworkList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.courseworkItem {
+  padding: 6px 12px;
+  background: rgba(255, 107, 53, 0.08);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.courseworkItem:hover {
+  background: rgba(255, 107, 53, 0.15);
+  color: var(--color-primary);
+}
+
+.certList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.certCard {
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.certCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition-slow);
+}
+
+.certCard:hover::before {
+  transform: scaleY(1);
+}
+
+.certCard:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+}
+
+.certTitle {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+.certProvider {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+}
+
+.certDate {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(255, 107, 53, 0.08);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .degreeCard,
+  .certCard {
+    padding: var(--spacing-md);
+  }
+}

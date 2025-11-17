@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeTechApp.Pages.ServicePage"
+             Title="Services"
+             >
+    <ContentPage.Resources>
+        <Style TargetType="SearchBar">
+            <Setter Property="BackgroundColor" Value="#2d89ef" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="PlaceholderColor" Value="WhiteSmoke" />
+            <Setter Property="Margin" Value="10,20,10,10" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#ffffff" />
+            <!-- Brownish Color -->
+            <Setter Property="BorderColor" Value="#dddddd" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="10,5" />
+        </Style>
+        
+        <Style TargetType="Label" x:Key="ServiceText">
+            <Setter Property="TextColor" Value="#333" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="5,2" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#ff5722" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content >
+        <ScrollView>
+            <StackLayout Padding="10" BackgroundColor="#f5f5f5">
+
+                <!-- Search Bar -->
+                <SearchBar Placeholder="Search testimonials"
+                           Text="{Binding SearchQuery}"
+                           HorizontalOptions="FillAndExpand"
+                            />
+                <Label Text="Our Services"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                        TextColor="#2d89ef"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"/>
+
+                <!-- Service Categories -->
+                <CollectionView ItemsSource="{Binding FilteredServices}">
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate >
+                            <Frame> <!--BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="5"> -->
+                                <StackLayout>
+                                    <Image Source="{Binding Image}" 
+                                           HeightRequest="150"
+                                           Aspect="AspectFill"
+                                           Margin="0,0,0,10"
+                                           WidthRequest="300" 
+                                           />
+                                    <Label Text="{Binding Name}" 
+                                           FontAttributes="Bold" 
+                                            FontSize="18"
+                                           HorizontalTextAlignment="Center" 
+                                           Style="{StaticResource ServiceText}" />
+                                    
+                                    <Label Text="{Binding Price}" 
+                                           Style="{StaticResource ServiceText}" 
+                                            FontSize="16"
+                                           TextColor="#777" 
+                                           HorizontalTextAlignment="Center" />
+                                    
+                                    <Label Text="{Binding Description}" 
+                                           FontSize="16" 
+                                           TextColor="#666" 
+                                           LineHeight="1.5"/>
+                                    
+                                    <Button Text="Read More" 
+                                            BackgroundColor="{StaticResource SecondaryColor}"
+                                            TextColor="White"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToDetailsCommand}" 
+                                            CommandParameter="{Binding}" />
+                                    
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
