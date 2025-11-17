@@ -35,11 +35,10 @@ export default function ImageSphere({ images, title }: ImageSphereProps) {
   const lastMouseRef = useRef({ x: 0, y: 0 });
   const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null);
   const [showControls, setShowControls] = useState(false);
-  const controlTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const controlTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
   const sphereRadiusRef = useRef(0);
   const timeRef = useRef(0);
-  const [stats, setStats] = useState({ total: 0, current: 0 });
 
   useEffect(() => {
     autoRotateRef.current = isAutoRotating;
@@ -213,7 +212,7 @@ export default function ImageSphere({ images, title }: ImageSphereProps) {
         ctx.translate(point.screenX, point.screenY);
         if (isHovered) {
           ctx.rotate(point.rotationX * 0.25);
-          ctx.skewY(point.rotationY * 0.08);
+          ctx.transform(1, point.rotationY * 0.08, 0, 1, 0, 0);
         }
         ctx.translate(-point.screenX, -point.screenY);
 
@@ -348,7 +347,6 @@ export default function ImageSphere({ images, title }: ImageSphereProps) {
       });
 
       setHoveredImageIndex(hovered ? hovered.imgIndex : null);
-      setStats({ total: images.length, current: hovered ? hovered.imgIndex + 1 : 0 });
     };
 
     const handleMouseDown = (e: MouseEvent) => {
@@ -380,7 +378,6 @@ export default function ImageSphere({ images, title }: ImageSphereProps) {
 
     const handleMouseLeave = () => {
       setHoveredImageIndex(null);
-      setStats({ total: images.length, current: 0 });
     };
 
     const handleWheel = (e: WheelEvent) => {
