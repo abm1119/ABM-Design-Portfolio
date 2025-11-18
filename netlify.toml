@@ -1,18 +1,9 @@
 [build]
-  # Build command
   command = "npm run build"
-  
-  # Directory to publish (Vite builds to 'dist' by default)
   publish = "dist"
-  
-  # Directory with the netlify.toml file
-  base = "."
 
 [build.environment]
-  # Node.js version
   NODE_VERSION = "18"
-  
-  # NPM version
   NPM_VERSION = "9"
 
 # Production environment variables
