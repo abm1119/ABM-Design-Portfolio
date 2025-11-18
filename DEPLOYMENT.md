@@ -146,11 +146,11 @@ The `netlify.toml` file contains:
 npm run build
 npm run preview
 
-# Check environment variables
-node server/check-env.js
+# Test Netlify Functions locally
+netlify dev
 
-# Test Notion connection
-node server/test-notion.js
+# Test Netlify Functions
+netlify functions:invoke blogs
 ```
 
 ## 📈 Monitoring

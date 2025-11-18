@@ -9,10 +9,8 @@ interface ApiConfig {
 
 // Get environment variables with fallbacks
 const getApiConfig = (): ApiConfig => {
-  // In production, we'll use Netlify Functions
-  const isProduction = import.meta.env.PROD;
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || 
-    (isProduction ? '/.netlify/functions' : 'http://localhost:3000');
+  // Always use Netlify Functions (works in both dev and production)
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || '/.netlify/functions';
   
   return {
     baseUrl,

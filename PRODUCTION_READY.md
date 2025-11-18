@@ -102,8 +102,8 @@ Before going live, you can test locally:
 npm run build
 npm run preview
 
-# Check environment
-npm run check-env
+# Test Netlify Functions locally
+netlify dev
 ```
 
 ## 🎉 Congratulations!

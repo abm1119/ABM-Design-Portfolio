@@ -1,9 +1,9 @@
 // Netlify Function for fetching a single blog post by slug
 import { Client } from '@notionhq/client';
 
-// Get environment variables with fallbacks
-const NOTION_API_KEY = process.env.NOTION_API_KEY || 'ntn_f92503707891vwW3OMbIXBEWQB7aGHAsDv67u0EXOYM0vk';
-const DATABASE_ID = process.env.NOTION_DATABASE_ID || '2a52275d74e581a8bddfe2634ee7f58d';
+// Get environment variables
+const NOTION_API_KEY = process.env.NOTION_API_KEY;
+const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
 // Initialize Notion client
 const notion = new Client({
