@@ -321,6 +321,8 @@ npm run server
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/abm1119/ABM-Design-Portfolio)
 
+🚀 **Live Site**: [https://abm-design-portfolio.netlify.app](https://abm-design-portfolio.netlify.app)
+
 1. **Connect GitHub Repository**
    - Fork this repository
    - Connect to Netlify from your GitHub account
