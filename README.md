@@ -317,38 +317,46 @@ npm run server
 
 ## 🚀 Deployment
 
-### Frontend (Vercel/Netlify)
+### Quick Deploy to Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/abm1119/ABM-Design-Portfolio)
+
+1. **Connect GitHub Repository**
+   - Fork this repository
+   - Connect to Netlify from your GitHub account
+
+2. **Set Environment Variables** in Netlify Dashboard:
+   ```env
+   NOTION_API_KEY=your_notion_integration_token
+   NOTION_DATABASE_ID=your_notion_database_id
+   VITE_API_BASE_URL=/.netlify/functions
+   VITE_ENABLE_BLOG=true
+   ```
+
+3. **Deploy**
+   - Netlify will automatically build and deploy
+   - Your site will be live at `https://your-site-name.netlify.app`
+
+### Manual Deployment
 
 1. **Build the project**
    ```bash
    npm run build
    ```
 
-2. **Deploy the `dist` folder**
-
-### Backend (Railway/Heroku)
-
-1. **Set environment variables**
-   ```env
-   NOTION_API_KEY=your_token
-   NOTION_DATABASE_ID=your_db_id
-   NODE_ENV=production
-   PORT=3000
-   ```
-
-2. **Deploy server folder**
-   ```bash
-   node server/server.js
-   ```
+2. **Deploy the `dist` folder** to any static hosting service
 
 ### Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `NOTION_API_KEY` | ✅ | Notion integration token |
-| `NOTION_DATABASE_ID` | ✅ | Notion database ID |
-| `NODE_ENV` | ❌ | Environment (development/production) |
-| `PORT` | ❌ | Server port (default: 3000) |
+| Variable | Required | Description | Default |
+|----------|----------|-------------|---------|
+| `NOTION_API_KEY` | ✅ | Notion integration token | - |
+| `NOTION_DATABASE_ID` | ✅ | Notion database ID | - |
+| `VITE_API_BASE_URL` | ❌ | API base URL | `/.netlify/functions` |
+| `VITE_ENABLE_BLOG` | ❌ | Enable/disable blog | `true` |
+| `VITE_API_TIMEOUT` | ❌ | API timeout (ms) | `10000` |
+
+📖 **For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)**
 
 ## 🤝 Contributing
 

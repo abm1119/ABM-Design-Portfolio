@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import CalendarIcon from '../icons/CalendarIcon';
 import ArrowLeftIcon from '../icons/ArrowLeftIcon';
+import { endpoints, apiFetch } from '../../config/api';
 import styles from './BlogDetail.module.css';
 import type { BlogPost } from '../../types/blog';
 
@@ -17,7 +18,7 @@ export default function BlogDetail() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`http://localhost:3000/blog/${slug}`);
+        const response = await apiFetch(endpoints.blog(slug!));
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

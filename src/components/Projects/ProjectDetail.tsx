@@ -169,7 +169,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                   <button
                     key={tab}
                     className={`${styles.tabButton} ${activeTab === tab ? styles.active : ''}`}
-                    onClick={() => setActiveTab(tab as any)}
+                    onClick={() => setActiveTab(tab as 'sphere' | 'details' | 'lightbox')}
                   >
                     <span className={styles.tabIcon}>
                       {tab === 'sphere' && '🎆'}

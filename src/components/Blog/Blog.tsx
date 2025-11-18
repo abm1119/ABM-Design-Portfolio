@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CalendarIcon from '../icons/CalendarIcon';
 import ArrowRightIcon from '../icons/ArrowRightIcon';
+import { endpoints, apiFetch, apiConfig } from '../../config/api';
 import styles from './Blog.module.css';
 import type { BlogPost } from '../../types/blog';
 
@@ -23,10 +24,7 @@ export default function Blog() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('http://localhost:3000/blogs', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      });
+      const response = await apiFetch(endpoints.blogs);
 
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);
@@ -51,7 +49,12 @@ export default function Blog() {
 
   // Load posts on mount
   useEffect(() => {
-    fetchPosts();
+    if (apiConfig.enableBlog) {
+      fetchPosts();
+    } else {
+      setLoading(false);
+      setError('Blog functionality is currently disabled');
+    }
   }, []);
 
   // Setup intersection observers for animations

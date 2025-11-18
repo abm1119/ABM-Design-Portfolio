@@ -7,8 +7,11 @@
     "dev": "vite",
     "server": "node server/server.js",
     "build": "tsc -b && vite build",
+    "build:production": "npm run lint && npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:netlify": "npm run build:production && netlify deploy --prod --dir=dist",
+    "check-env": "node server/check-env.js"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",

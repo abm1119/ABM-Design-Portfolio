@@ -1,0 +1,11 @@
+# Netlify redirects for SPA routing
+# This ensures that all routes are handled by React Router
+
+# API routes should go to Netlify Functions
+/api/* /.netlify/functions/:splat 200
+
+# Blog routes should be handled by React Router
+/blog/* /index.html 200
+
+# All other routes should be handled by React Router
+/* /index.html 200
