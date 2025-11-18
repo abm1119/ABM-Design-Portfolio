@@ -15,7 +15,7 @@ export default function AbmLogoIcon({
 }: AbmLogoIconProps) {
   return (
     <img 
-      src="/src/components/icons/abmlogo.svg"
+      src="/abmlogo.svg"
       alt="ABM Design Logo"
       width={width}
       height={height}
