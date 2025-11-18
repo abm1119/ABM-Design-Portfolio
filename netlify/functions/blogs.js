@@ -1,12 +1,14 @@
 // Netlify Function for fetching all blog posts
 import { Client } from '@notionhq/client';
 
+// Get environment variables with fallbacks
+const NOTION_API_KEY = process.env.NOTION_API_KEY || 'ntn_f92503707891vwW3OMbIXBEWQB7aGHAsDv67u0EXOYM0vk';
+const DATABASE_ID = process.env.NOTION_DATABASE_ID || '2a52275d74e581a8bddfe2634ee7f58d';
+
 // Initialize Notion client
 const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
+  auth: NOTION_API_KEY,
 });
-
-const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
 // Helper function to format blog post
 const formatBlogPost = async (page) => {
@@ -77,7 +79,7 @@ export const handler = async (event, context) => {
 
   try {
     // Validate environment variables
-    if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
+    if (!NOTION_API_KEY || !DATABASE_ID) {
       throw new Error('Missing required environment variables');
     }
 
